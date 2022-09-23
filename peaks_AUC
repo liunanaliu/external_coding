@@ -13,3 +13,16 @@ https://community.rstudio.com/t/find-peaks-in-ppg-ecg-data/17452/3
 
 
 https://www.smin95.com/dataviz/calculating-area-under-a-curve.html#area-under-a-curve
+
+
+#220923 na for wanling peaks area under curve
+devtools::install_github("smin95/smplot",
+                         force = T)
+library(smplot)
+library(tidyverse)
+All_bak <- All_bak_mean %>% filter(wavelength > 1600 & wavelength < 1800)
+
+
+peak_auc <- sm_auc_list(subjects = "group", conditions = "conc", 
+            x="wavelength", values = "mean",
+            data = All_bak)
